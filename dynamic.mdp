@@ -1,0 +1,39 @@
+integrator               = md
+dt                       = 0.02 ; 20fs
+nsteps                   = 350000000; 7micro ;50000; 1ns for  bench; 500000000; 10micros ; 50000000; 1micro 
+nstxout                  = 0 
+nstvout                  = 0
+nstfout                  = 0
+nstlog                   = 5000 
+nstxout-compressed       = 50000
+compressed-x-precision   = 100
+
+
+
+
+
+cutoff-scheme            = Verlet
+nstlist                  = 20
+ns_type                  = grid
+pbc                      = xyz
+verlet-buffer-tolerance  = 0.005
+
+coulombtype              = reaction-field 
+rcoulomb                 = 1.1
+epsilon_r                = 15    ; 2.5 (with polarizable water)
+epsilon_rf               = 0
+vdw_type                 = cutoff  
+vdw-modifier             = Potential-shift-verlet
+rvdw                     = 1.1
+
+tcoupl                   = v-rescale 
+tc-grps                  = PolyAB Solvent; Water ;Protein Lipids Solvent 
+tau-t                    = 1.0 1.0; 1.0
+ref-t                    = TEMP TEMP; 280
+continuation             = yes
+gen-vel                  = no
+Pcoupl                   = parrinello-rahman 
+Pcoupltype               = isotropic ; semiisotropic
+tau-p                    = 12.0
+compressibility          = 3e-4 ;3e-4
+ref-p                    = 1.0 ;1.0

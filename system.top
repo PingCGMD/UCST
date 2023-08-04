@@ -1,0 +1,15 @@
+; Include forcefield parameters
+#include "./martini_v3.0.0.itp"
+#include "./martini_v3.0.0_solvents_v1.itp"
+#include "./martini_v3.0.0_ions_v1.itp"
+#include "./PAAmBMDO_P13_gradient.itp"
+
+[ system ]
+; Name
+PAAmBMDO in water
+
+[ molecules ]
+; Compound       #mols
+PAAmBMDO         24
+
+W               257160

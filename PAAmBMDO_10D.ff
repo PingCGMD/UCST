@@ -1,0 +1,112 @@
+[ citations ]
+;Martini3
+;polyply
+
+[ moleculetype ]
+PAAm2 1
+
+[ atoms ]
+1 P4 1 PAAm2 BBa 1 0.0
+2 P4 1 PAAm2 BBb 2 0.0
+
+[ bonds ]
+; BB-BB
+1 2 1 0.380 2000.0
+
+;-------------------------BMDO------------------------------
+[ moleculetype ]
+; molname       nrexcl
+BMDO            1
+
+[ atoms ]
+;id type resnr residu atom cgnr   charge
+1    N4a   1     BMDO     BB1     1    0
+2    TC5   1     BMDO     BEN1    2    0
+3    TC5   1     BMDO     BEN2    3    0
+4    TC5   1     BMDO     BEN3    4    0
+5    TC3   1     BMDO     BB2     5    0
+
+[bonds]
+; Backbone bonds
+;  i     j   funct   length  force.c.
+   1     2     1     0.320   7000.0   {"group": "BB-BEN"}
+   2     5     1     0.240   7000.0   {"group": "BB-BEN"}
+
+; Sidechain bonds
+   2     3     1     0.220   7000.0  {"group": "BEN-BEN"}
+   2     4     1     0.220   7000.0  {"group": "BEN-BEN"}
+   3     4     1     0.220   7000.0  {"group": "BEN-BEN"}
+
+[constraints]
+;  i     j   funct   length
+
+[angles]
+; Backbobe angles
+;  i     j    k     funct   angle  force.c.
+   1     2    5       2     90.00    50.00; BB1-BEN1-BB2
+   1     2    3       2     100.0    50.00; BB1-BEN1-BEN2
+   1     2    4       2     155.0    300.0; BB1-BEN1-BEN3
+   2     3    4       2     50.00    300.0; BEN1-BEN2-BEN3
+   2     4    3       2     50.00    300.0; BEN1-BEN3-BEN2
+   3     2    4       2     50.00    300.0; BEN2-BEN1-BEN3
+   3     2    5       2     155.0    300.0; BEN2-BEN1-BB2
+   4     2    5       2     100.0    200.0; BEN3-BEN1-BB2
+   
+
+
+;--------------------------link:PAAm2-BMDO--------------------------------------
+[ link ]
+resname "PAAm2|BMDO"
+[ bonds ]
+;  ai  aj   funct   bond   force.c.
+ BBb    +BB1   1     0.350    3000.0  {"comment": "PAAm2-BMDO"}
+   
+[ link ]
+resname "PAAm2|BMDO"
+[ angles ]
+; Backbobe angles
+;  i     j    k     funct   angle  force.c.
+  BBa    BBb   +BB1      2     85.00   15.00 {"comment": "PAAm2-BMDO"}
+  BBb   +BB1   +BEN1     2     120.0   50.00 {"comment": "PAAm2-BMDO"}
+  
+
+;--------------------link:BMDO-PAAm2------------------------------------------
+
+[ link ]
+resname "BMDO|PAAm2"
+[ bonds ]
+;  ai  aj   funct   angle   force.c.
+ BB2  +BBa   1      0.280    7000.0  {"comment": "BMDO-PAAm2", "group": "BB-BB"}
+
+[ link ]
+resname "BMDO|PAAm2"
+[ angles ]
+;  i    j    k      funct    angle    force.c.
+  BEN1  BB2    +BBa     2     160.0    20.00 {"group": "BB-BB-BB","comment": "BMDO-PAAm2"}
+  BB2   +BBa   +BBb     2     85.00    15.00 {"group": "BB-BB-BB","comment": "BMDO-PAAm2"}
+
+;------------------------------AAm2-AAm2--------------------------------------------------
+[ link ]
+resname "PAAm2"
+[ bonds ]
+BBb   +BBa   1     0.380   2000.0  {"group": "BB-BB"}
+
+[ link ]
+resname "PAAm2"
+[ angles ]
+BBa  BBb   +BBa     2    85.00    15.00      {"group": "BB-BB-BB"}
+BBb  +BBa  +BBb     2    85.00    15.00      {"group": "BB-BB-BB"}
+
+;-------------------------------------------------------BMDO-BMDO----------------------cite from mapping1------
+
+[ link ]
+resname "BMDO"
+[ bonds ]
+BB2  +BB1   1     0.280   6000.0  {"group": "BMDO-BMDO"}
+
+[ link ]
+resname "BMDO"
+[ angles ]
+BB2  +BB1  +BEN1    2    130.00    150.00      {"group": "BMDO-BMDO"}
+
+

@@ -1,0 +1,22 @@
+[ citations ]
+;martini3
+;polyply
+
+[ moleculetype ]
+PAAm   1
+;
+[ atoms ]
+;  nr    type       resnr  residu    atom    cgnr     charge   
+   1      P4         1      PAAm     BB       1        0.0   
+    
+
+[ link ]
+resname "PAAm"
+[ bonds ]
+BB   +BB    1     0.380   2000.0  {"group": "BB-BB"}
+
+[ link ]
+resname "PAAm"
+[ angles ]
+BB  +BB  ++BB    2    85.00    15.00      {"group": "BB-BB-BB"}
+

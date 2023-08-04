@@ -1,0 +1,15 @@
+; /home/ping/.local/bin/polyply gen_itp -f PAAm.ff -seq PAAm:2 -name PAAm2 -o PAAm2.itp
+
+; Please cite the following papers:
+
+[ moleculetype ]
+PAAm2 1
+
+[ atoms ]
+1 P4 1 PAAm BB 1 0.0 
+2 P4 2 PAAm BB 2 0.0 
+
+[ bonds ]
+; BB-BB
+1 2 1 0.380 2000.0
+
