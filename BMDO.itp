@@ -1,0 +1,45 @@
+[ moleculetype ]
+; molname       nrexcl
+BMDO            1
+
+[ atoms ]
+;id type resnr residu atom cgnr   charge
+1    N4a   1     BMDO     BB1     1    0
+2    TC5   1     BMDO     BEN1    2    0
+3    TC5   1     BMDO     BEN2    3    0
+4    TC5   1     BMDO     BEN3    4    0
+5    TC3   1     BMDO     BB2     5    0
+
+[bonds]
+; Backbone bonds
+;  i     j   funct   length  force.c.
+   1   2     1     0.32    6000.0   {"group": "BB1-BEN1"} 
+   2   5     1     0.24    6000.0   {"group": "BEN1-BB2"}
+
+; Sidechain bonds
+   2     3     1     0.20    7000.0  {"group": "BEN1-BEN2"}
+   2     4     1     0.20    7000.0  {"group": "BEN1-BEN3"}
+   3     4     1     0.26    7000.0  {"group": "BEN2-BEN3"}
+         
+[constraints]
+;  i     j   funct   length  
+
+[angles]
+; Backbobe angles
+;  i     j    k     funct   angle  force.c.
+   1     2    5       1      95.0    200.0; BB1-BEN1-BB2
+   1     2    3       1      95.0     20.0;  BB1-BEN1-BEN2
+   1     2    4       1     178.0     50.0; BB1-BEN1-BEN3
+   2     3    4       1      92.0    200.0; BEN1-BEN2-BEN3
+   2     4    3       1      72.0    500.0; BEN1-BEN3-BEN2
+;  3     2    4    
+   3     2    5      1     170.0    200.0; BEN2-BEN1-BB2
+   4     2    5      1      92.0    200.0;  BEN3-BEN1-BB2  
+   
+[dihedrals]
+; Backbone
+;  i     j    k    l   funct  ref.angle   force_k
+   
+
+
+ 

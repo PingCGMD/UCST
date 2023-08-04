@@ -1,0 +1,36 @@
+[ citations ]
+;martini3
+;polyply
+
+[ moleculetype ]
+PAAm   1
+;
+[ atoms ]
+;  nr    type       resnr  residu    atom    cgnr     charge   
+   1     TC3         1      PAAm     BB       1        0.0   
+   2     TP4         1      PAAm     SC1      2        0.0   
+;
+[ bonds ]
+;  ai  aj   funct
+   1   2      1     0.215  7000.0 {"group": "BB-SC1"}
+
+[ link ]
+resname "PAAm"
+[ bonds ]
+BB     +BB    1     0.210   6000.0  {"group": "BB-BB"}
+
+[ link ]
+resname "PAAm"
+[ angles ]
+BB  +BB  ++BB  1  160.0  20.0  {"group": "BB-BB-BB"}
+
+[ link ]
+resname "PAAm"
+[ angles ]
+SC1  BB  +BB   1  130.0  20.0  {"group": "SC1-BB-BB"}
+BB  +BB  +SC1  1  40.0   100.0  {"group": "BB-BB-SC1"}
+
+[ edges ]
+BB SC1
+BB +BB
++BB +SC1

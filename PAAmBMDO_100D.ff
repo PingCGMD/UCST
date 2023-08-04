@@ -1,0 +1,118 @@
+[ citations ]
+;martini3
+;polyply
+;--------------------------PAAm------------------------------------
+
+[ moleculetype ]
+PAAm   1
+;
+[ atoms ]
+;  nr    type       resnr  residu    atom    cgnr     charge   
+   1     TC3         1      PAAm     BB       1        0.0   
+   2     TP4         1      PAAm     SC1      2        0.0   
+;
+[ bonds ]
+;  ai  aj   funct
+   1   2      1     0.215  7000.0 {"group": "BB-SC1"}
+
+[ link ]
+resname "PAAm"
+[ bonds ]
+-BB    BB    1     0.210   6000.0  {"group": "BB-BB"}
+
+[ link ]
+resname "PAAm"
+[ angles ]
+-BB  BB  +BB  1  160.0  20  {"group": "BB-BB-BB"}
+
+[ link ]
+resname "PAAm"
+[ angles ]
+-SC1  -BB  BB   1  130.0  20  {"group": "SC1-BB-BB"}
+-BB   BB  SC1  1  40.0   100  {"group": "BB-BB-SC1"}
+
+[ edges ]
+-BB -SC1
+-BB BB
+BB SC1
+
+;------------------------------BMDO------------------------------------
+
+[ moleculetype ]
+; molname       nrexcl
+BMDO            1
+
+[ atoms ]
+;id type resnr residu atom cgnr   charge
+1    N4a   1     BMDO     BB1     1    0
+2    TC5   1     BMDO     BEN1    2    0
+3    TC5   1     BMDO     BEN2    3    0
+4    TC5   1     BMDO     BEN3    4    0
+5    TC3   1     BMDO     BB2     5    0
+
+[bonds]
+; Backbone bonds
+;  i     j   funct   length  force.c.
+   1     2     1     0.32    6000.0   {"group": "BB-BEN"}
+   2     5     1     0.24    6000.0   {"group": "BB-BEN"}
+
+; Sidechain bonds
+   2     3     1     0.20    7000.0  {"group": "BEN-BEN"}
+   2     4     1     0.20    7000.0  {"group": "BEN-BEN"}
+   3     4     1     0.26    7000.0  {"group": "BEN-BEN"}
+
+[constraints]
+;  i     j   funct   length
+
+[angles]
+; Backbobe angles
+;  i     j    k     funct   angle  force.c.
+   1     2    5       1      95.0    200.0; BB1-BEN1-BB2
+   1     2    3       1      95.0    20.0;  BB1-BEN1-BEN2
+   1     2    4       1      178.0   50.0;  BB1-BEN1-BEN3
+   2     3    4       1      92.0    200.0; BEN1-BEN2-BEN3
+   2     4    3       1      72.0    500.0; BEN1-BEN3-BEN2
+;  3     2    4
+   3     2    5       1      170.0   200.0;  BEN2-BEN1-BB2
+   4     2    5       1      92.0    200.0;  BEN3-BEN1-BB2
+
+[dihedrals]
+; Backbone
+;  i     j    k    l   funct  ref.angle   force_k
+
+
+;------------------link: PAAm-BMDO---------------------------------
+
+[ link ]
+resname "PAAm|BMDO"
+[ bonds ]
+;  ai  aj   funct   bond   force.c.
+  BB  +BB1   1     0.280    6000.0  {"comment": "PAAm-BMDO","group": "BB-BB"}
+
+[ link ]
+resname "PAAm|BMDO"
+[ angles ]
+; Backbobe angles
+;  i     j    k     funct   angle  force.c.
+  -BB   BB    +BB1      1    160.0   20.0  {"group": "BB-BB-BB","comment": "PAAm-BMDO"}
+  BB    +BB1  +BEN1     1    130.0   200.0 {"group": "BB-BB-BB","comment": "PAAm-BMDO"}
+  SC1   BB    +BB1      1    70.00   20.0  {"group": "BB-BB-SC1","comment": "PAAm-BMDO"}
+
+
+
+[ link ]
+resname "BMDO|PAAm"
+[ bonds ]
+;  ai  aj   funct   angle   force.c.
+ BB2  +BB   1      0.210    6000.0  {"comment": "BMDO-PAAm", "group": "BB-BB"}
+
+[ link ]
+resname "BMDO|PAAm"
+[ angles ]
+;  i    j    k      funct    angle    force.c.
+  BEN1  BB2  +BB     1       160.0    20.0 {"group": "BB-BB-BB","comment": "BMDO-PAAM"}
+  BB2   +BB  ++BB    1       160.0    20.0 {"group": "BB-BB-BB","comment": "BMDO-PAAm"}
+  BB2   +BB  +SC1    1       40.0     100.0 {"group": "BB-BB-SC1","comment": "BMDO-PAAm"}
+
+
+
