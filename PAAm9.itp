@@ -1,0 +1,39 @@
+; /home/ping/.local/lib/python3.7/site-packages/polyply-1.2.1.dist-info/bin/polyply gen_itp -f PAAm.ff -seq PAAm:9 -name PAAm9 -o PAAm9.itp
+
+; Please cite the following papers:
+
+[ moleculetype ]
+PAAm9 1
+
+[ atoms ]
+1 P4 1 PAAm9 BB9a 1 0.0 
+2 P4 1 PAAm9 BB9b 2 0.0 
+3 P4 1 PAAm9 BB9c 3 0.0 
+4 P4 1 PAAm9 BB9d 4 0.0 
+5 P4 1 PAAm9 BB9e 5 0.0 
+6 P4 1 PAAm9 BB9f 6 0.0 
+7 P4 1 PAAm9 BB9g 7 0.0 
+8 P4 1 PAAm9 BB9h 8 0.0 
+9 P4 1 PAAm9 BB9i 9 0.0 
+
+[ bonds ]
+; BB9-BB
+1 2 1 0.380 2000.0
+2 3 1 0.380 2000.0
+3 4 1 0.380 2000.0
+4 5 1 0.380 2000.0
+5 6 1 0.380 2000.0
+6 7 1 0.380 2000.0
+7 8 1 0.380 2000.0
+8 9 1 0.380 2000.0
+
+[ angles ]
+; BB9-BB-BB
+1 2 3 2 85.00 15.00
+2 3 4 2 85.00 15.00
+3 4 5 2 85.00 15.00
+4 5 6 2 85.00 15.00
+5 6 7 2 85.00 15.00
+6 7 8 2 85.00 15.00
+7 8 9 2 85.00 15.00
+
